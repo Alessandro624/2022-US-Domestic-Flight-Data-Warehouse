@@ -110,8 +110,8 @@ def get_domain_rules() -> dict:
     domain_rules = {
         "Flights": {
             "pk": "flight_id",
-            "unique_keys": ["fl_date", "dep_hour", "origin", "dest", "op_unique_carrier"],
-            "req_cols": ["flight_id", "fl_date", "dep_hour", "origin", "dest", "op_unique_carrier"],
+            "unique_keys": ["fl_date", "dep_hour", "origin", "dest", "op_unique_carrier", "op_carrier_fl_num"],
+            "req_cols": ["flight_id", "fl_date", "dep_hour", "origin", "dest", "op_unique_carrier", "mkt_unique_carrier", "tail_num"],
             "time_col": "fl_date",
             "validity": {
                 "fl_date": lambda s: pd.to_datetime(s, errors="coerce").notna(),
