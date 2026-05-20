@@ -1,0 +1,94 @@
+# Database Schema: Flights and Weather
+
+Below is the database structure, organized by tables with their respective attributes. Primary keys (**PK**) and foreign keys (**FK**) are highlighted for clarity.
+
+## ACTIVE_WEATHER
+
+* **STATUS** (`PK`)
+* WEATHER_DESCRIPTION
+
+## AIRCRAFTS
+
+* **TAIL_NUM** (`PK`)
+* YEAR_OF_MANUFACTURE
+* MANUFACTURER
+* ICAO_TYPE
+* RANGE
+* WIDTH
+
+## CANCELLATION
+
+* **STATUS** (`PK`)
+* CANCELLATION_REASON
+
+## CARRIERS
+
+* **CODE** (`PK`)
+* DESCRIPTION
+
+## FLIGHTS
+
+* **FLIGHT_ID** (`PK SURROGATE`)
+* FL_DATE
+* DEP_HOUR
+* **MKT_UNIQUE_CARRIER** (`FK`)
+* MKT_CARRIER_FL_NUM
+* **OP_UNIQUE_CARRIER** (`FK`)
+* OP_CARRIER_FL_NUM
+* **TAIL_NUM** (`FK`)
+* **ORIGIN** (`FK`)
+* **DEST** (`FK`)
+* DEP_TIME
+* CRS_DEP_TIME
+* TAXI_OUT
+* DEP_DELAY
+* AIR_TIME
+* DISTANCE
+* **CANCELLED** (`FK`)
+* **WEATHER_OBSERVATION_ID** (`FK`)
+
+## STATIONS
+
+* **AIRPORT** (`PK`)
+* AIRPORT_ID
+* DISPLAY_AIRPORT_NAME
+* DISPLAY_AIRPORT_CITY_NAME_FULL
+* AIRPORT_STATE_NAME
+* AIRPORT_STATE_CODE
+* LATITUDE
+* LONGITUDE
+* ELEVATION
+* ICAO
+* IATA
+* FAA
+* MESONET_STATION
+
+## WEATHER_OBSERVATIONS
+
+* **OBS_ID** (`PK SURROGATE`)
+* **ORIGIN_AIRPORT** (`FK`)
+* OBS_DATE
+* OBS_HOUR
+* WIND_DIR
+* WIND_SPD
+* WIND_GUST
+* VISIBILITY
+* TEMPERATURE
+* DEW_POINT
+* REL_HUMIDITY
+* ALTIMETER
+* LOWEST_CLOUD_LAYER
+* N_CLOUD_LAYER
+* LOW_LEVEL_CLOUD
+* MID_LEVEL_CLOUD
+* HIGH_LEVEL_CLOUD
+* CLOUD_COVER
+* **ACTIVE_WEATHER_STATUS** (`FK`)
+
+---
+
+## E-R Relational Schema
+
+Below is the visual representation of the database schema:
+
+![Database Schema](images/Conceptual%20Schema.png)
