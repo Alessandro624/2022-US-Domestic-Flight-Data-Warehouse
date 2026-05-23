@@ -6,10 +6,10 @@
 
 ## Glossary of Measures
 
-The following table details the measures extracted from the Dimensional Fact Model, along with their calculation formulas and additivity properties across dimensions.
+The following table details the measures extracted from the Dimensional Fact Model, along with the aggregation formulas used in the measure glossary.
 
 | Measure Name | Formula / Expression |
-| :--- | :--- | :--- |
+| :--- | :--- |
 | # OF FLIGHTS | COUNT(*) |
 | AVG_DELAY | AVG(DEP_DELAY) |
 | SUM_DELAY | SUM(DEP_DELAY) |
