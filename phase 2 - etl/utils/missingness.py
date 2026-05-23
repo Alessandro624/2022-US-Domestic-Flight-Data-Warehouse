@@ -167,7 +167,7 @@ class MissingnessAnalyzer:
         if not perfect_cooccurrence:
             reason = "imperfect co-occurrence"
         elif not dangerous_within_threshold and n_dangerous > 0:
-            reason = f"dangerous cancellations {dangerous_pct:.1%} > threshold {max_dangerous_pct:.1%} — " f"consider raising max_dangerous_pct or inspecting the {n_dangerous} flights"
+            reason = f"dangerous cancellations {dangerous_pct:.1%} > threshold {max_dangerous_pct:.1%} - " f"consider raising max_dangerous_pct or inspecting the {n_dangerous} flights"
         else:
             reason = "ok"
 
@@ -180,7 +180,7 @@ class MissingnessAnalyzer:
             "max_dangerous_pct_threshold": max_dangerous_pct,
             "safe_to_drop": safe_to_drop,
             "reason": reason,
-            "recommendation": ("SAFE TO DROP - delete rows with null weather fields and corresponding flights" if safe_to_drop else f"INTERPOLATE — {reason}"),
+            "recommendation": ("SAFE TO DROP - delete rows with null weather fields and corresponding flights" if safe_to_drop else f"INTERPOLATE - {reason}"),
         }
 
     def classify_mechanism(
