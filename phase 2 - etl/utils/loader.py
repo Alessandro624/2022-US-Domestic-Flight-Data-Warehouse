@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Mapping
 
 import pandas as pd
-from .config import RECONCILED_PATHS, CLEANED_PATHS, ORIGINAL_PATHS
+from .config import RECONCILED_PATHS, CLEANED_PATHS, ORIGINAL_PATHS, DW_PATHS
 
 
 def _normalize_columns(df: pd.DataFrame, normalize_cols: str) -> pd.DataFrame:
@@ -31,9 +31,10 @@ def load_tables(
             "original": ORIGINAL_PATHS,
             "reconciled": RECONCILED_PATHS,
             "cleaned": CLEANED_PATHS,
+            "dw": DW_PATHS,
         }
         if source not in source_map:
-            raise ValueError(f"Unknown source '{source}'. Use 'original', 'reconciled', 'cleaned', or a dict.")
+            raise ValueError(f"Unknown source '{source}'. Use 'original', 'reconciled', 'cleaned', 'dw', or a dict.")
         path_map = source_map[source]
     elif isinstance(source, Mapping):
         path_map = {table_name: Path(path) for table_name, path in source.items()}
