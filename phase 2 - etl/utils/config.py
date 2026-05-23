@@ -2,7 +2,11 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+
+try:
+    import matplotlib.pyplot as plt
+except ModuleNotFoundError:
+    plt = None
 
 pd.set_option("display.max_columns", None)
 pd.set_option("display.float_format", lambda x: f"{x:.4f}")
@@ -10,7 +14,7 @@ np.random.seed(42)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_ROOT = PROJECT_ROOT / "data"
-REPORTS_ROOT = PROJECT_ROOT / "reports"
+OUTPUT_ROOT = PROJECT_ROOT / "output"
 
 MATPLOTLIB_RCPARAMS = {
     "figure.facecolor": "#FAFAFA",
@@ -21,19 +25,20 @@ MATPLOTLIB_RCPARAMS = {
     "font.size": 10,
 }
 
-plt.rcParams.update(MATPLOTLIB_RCPARAMS)
+if plt is not None:
+    plt.rcParams.update(MATPLOTLIB_RCPARAMS)
 
 ORIGINAL_DATA_DIR = DATA_ROOT / "1-original dataset"
 RECONCILED_DATA_DIR = DATA_ROOT / "2-reconciled database"
 CLEANED_DATA_DIR = DATA_ROOT / "3-cleaned database"
 DW_DATA_DIR = DATA_ROOT / "4-data warehouse"
 
-DQA_REPORT_DIR = REPORTS_ROOT / "1-DQA"
-MISSING_REPORT_DIR = REPORTS_ROOT / "2-missing values"
-OUTLIER_REPORT_DIR = REPORTS_ROOT / "3-outliers"
-CLEANING_REPORT_DIR = REPORTS_ROOT / "4-cleaning pipeline"
-MODELING_REPORT_DIR = REPORTS_ROOT / "5-modeling"
-ETL_REPORT_DIR = REPORTS_ROOT / "6-ETL"
+DQA_REPORT_DIR = OUTPUT_ROOT / "1-DQA"
+MISSING_REPORT_DIR = OUTPUT_ROOT / "2-missing values"
+OUTLIER_REPORT_DIR = OUTPUT_ROOT / "3-outliers"
+CLEANING_REPORT_DIR = OUTPUT_ROOT / "4-cleaning pipeline"
+MODELING_REPORT_DIR = OUTPUT_ROOT / "5-modeling"
+ETL_REPORT_DIR = OUTPUT_ROOT / "6-ETL"
 
 ORIGINAL_FILES = [
     "CompleteData.csv",
