@@ -1,15 +1,32 @@
 from .config import *
-from .llm_client import call_llm, LLM_PROVIDER
+
+try:
+    from .llm_client import call_llm, LLM_PROVIDER
+except ModuleNotFoundError:
+    LLM_PROVIDER = None
+
+    def call_llm(*args, **kwargs):
+        raise RuntimeError("LLM client dependencies are not available in this environment.")
+
+
 from .loader import load_tables
 from .schema_guard import SchemaContract
 from .dqa import DQAReport, run_dqa
 from .domain_rules import get_domain_rules, WEATHER_VALIDITY_RULES
-from .missingness import MissingnessAnalyzer
-from .outliers import OutlierDetector
 from .audit import AuditLog
 from .cleaning import CleaningPipeline
 from .etl_pipeline import ETLPipeline
 from .schema_description import build_schema_description, build_column_info
+
+try:
+    from .missingness import MissingnessAnalyzer
+except ModuleNotFoundError:
+    MissingnessAnalyzer = None
+
+try:
+    from .outliers import OutlierDetector
+except ModuleNotFoundError:
+    OutlierDetector = None
 
 __all__ = [
     "ANALYTICS_CONFIG",
@@ -42,7 +59,7 @@ __all__ = [
     "RECONCILED_DATA_DIR",
     "RECONCILED_FILE_MAP",
     "RECONCILED_PATHS",
-    "REPORTS_ROOT",
+    "OUTPUT_ROOT",
     "SchemaContract",
     "WEATHER_COLS",
     "WEATHER_VALIDITY_RULES",
