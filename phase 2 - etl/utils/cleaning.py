@@ -252,9 +252,19 @@ class CleaningPipeline:
             # Drop also the Flight rows linked, if flight_df provided
             if flight_df is not None and flight_fk_col in flight_df.columns and dropped_obs_ids:
                 flight_mask = flight_df[flight_fk_col].isin(dropped_obs_ids)
+                n_flights_before = len(flight_df)
+                n_flights_dropped = int(flight_mask.sum())
                 flight_df.drop(index=flight_df[flight_mask].index, inplace=True)
                 flight_df.reset_index(drop=True, inplace=True)
-                print(f"  [handle_weather_nulls] DROP flight rows linked: {int(flight_mask.sum()):,} rows eliminated ({len(flight_df):,} remaining).")
+                self.audit.log(
+                    "handle_weather_nulls_drop_linked_flights",
+                    flight_fk_col,
+                    "batch",
+                    f"{n_flights_before} flight rows",
+                    f"{len(flight_df)} flight rows",
+                    f"Dropped {n_flights_dropped} linked flight rows after removing null weather observations",
+                )
+                print(f"  [handle_weather_nulls] DROP flight rows linked: {n_flights_dropped:,} rows eliminated ({len(flight_df):,} remaining).")
 
         # INTERPOLATE
         elif resolved == "interpolate":
