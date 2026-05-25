@@ -193,9 +193,8 @@ ANALYTICS_CONFIG = {
             ("dep_delay", 3.0),  # heavy-tailed: wider fence
             ("air_time", 1.5),
             ("taxi_out", 1.5),
-            ("distance", 2.5),
         ],
-        "outlier_multi": ["dep_delay", "air_time", "distance", "taxi_out"],
+        "outlier_multi": ["dep_delay", "air_time", "taxi_out"],
         "sample_size": 50_000,
     },
     "Weather_Observations": {
@@ -204,9 +203,8 @@ ANALYTICS_CONFIG = {
         "mcar_pair": ("wind_gust", "obs_hour"),
         "outlier_uni": [
             ("wind_gust", 2.5),
-            ("visibility", 1.5),
         ],
-        "outlier_multi": ["wind_spd", "wind_gust", "visibility", "temperature", "rel_humidity"],
+        "outlier_multi": ["wind_spd", "wind_gust", "temperature", "rel_humidity"],
         "sample_size": 30_000,
     },
     "Stations": {
