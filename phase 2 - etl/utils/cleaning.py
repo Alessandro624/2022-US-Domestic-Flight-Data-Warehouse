@@ -486,6 +486,42 @@ class CleaningPipeline:
         self._steps.append(f"fix_validity_range:{col}")
         return self
 
+    def impute_numeric_nulls_by_group_median(self, col, group_col=None):
+        if col not in self.df.columns or not pd.api.types.is_numeric_dtype(self.df[col]):
+            return self
+
+        before = self.df[col].copy()
+        mask = self.df[col].isna()
+        if not mask.any():
+            self._steps.append(f"impute_numeric_nulls_by_group_median:{col}")
+            return self
+
+        global_median = self.df[col].median(skipna=True)
+        if pd.isna(global_median):
+            print(f"  [impute_numeric_nulls_by_group_median:{col}] skipped: no non-null values available.")
+            return self
+
+        if group_col and group_col in self.df.columns:
+            group_medians = self.df.groupby(group_col, dropna=False)[col].transform("median")
+            imputed = group_medians.fillna(global_median)
+            strategy = f"group median by {group_col}, fallback global median={global_median:.3f}"
+        else:
+            imputed = pd.Series(global_median, index=self.df.index)
+            strategy = f"global median={global_median:.3f}"
+
+        self.df.loc[mask, col] = imputed.loc[mask]
+        self.audit.log_batch(
+            "impute_numeric_nulls_by_group_median",
+            col,
+            mask,
+            before,
+            self.df[col],
+            strategy,
+        )
+        print(f"  [impute_numeric_nulls_by_group_median:{col}] {int(mask.sum())} values imputed using {strategy}.")
+        self._steps.append(f"impute_numeric_nulls_by_group_median:{col}")
+        return self
+
     @property
     def clean_df(self):
         return self.df.copy()
