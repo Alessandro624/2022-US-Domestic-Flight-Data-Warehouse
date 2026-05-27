@@ -4,6 +4,10 @@
 # output files
 output/
 
+# LaTex files
+final_report.tex
+references.bib
+
 # Database files
 *.db
 *.sqlite
