@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS DIM_FL_DATES (
 CREATE TABLE IF NOT EXISTS DIM_DEP_HOURS (
     DEP_HOUR_ID SERIAL      PRIMARY KEY,
     DEP_HOUR    SMALLINT,               -- 0 to 23
-    TIME_BAND   VARCHAR(20),            -- e.g. 'Morning', 'Night'
+    TIME_BAND   VARCHAR(20),            -- Night(0-3), Early Morning(4-7), Morning(8-11), Afternoon(12-15), Evening(16-19), Late Evening(20-23)
     LOAD_TIMESTAMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
