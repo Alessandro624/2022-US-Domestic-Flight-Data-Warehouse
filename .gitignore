@@ -8,6 +8,9 @@ output/
 final_report.tex
 references.bib
 
+# Tableau temp files
+*.twbr
+
 # Database files
 *.db
 *.sqlite
