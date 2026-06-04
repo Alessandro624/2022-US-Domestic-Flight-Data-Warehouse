@@ -21,6 +21,7 @@ The work follows an academic data warehouse development workflow: source analysi
 | [data](data/README.md) | Data layers used throughout the project, from the original dataset to the final warehouse outputs. |
 | [phase 1 - design](phase%201%20-%20design/README.md) | Source of truth for the project design: reconciled schema, attribute tree, DFM, and star schema. |
 | [phase 2 - etl](phase%202%20-%20etl/README.md) | Jupyter notebooks and utilities for profiling, cleaning, dimensional transformation, and ETL. |
+| [phase 3 - data visualization](phase%203%20-%20data%20visualization/README.md) | Tableau dashboards built from the final data warehouse to support the analytical story. |
 | [phase 4 - report](phase%204%20-%20report/README.md) | Final report sources, generated figures, references, and compiled PDF. |
 
 ## Development Flow
@@ -33,7 +34,8 @@ flowchart LR
     D --> E["Dimensional modeling"]
     E --> F["Star schema"]
     F --> G["ETL output"]
-    G --> H["Final report"]
+    G --> H["Tableau dashboards"]
+    H --> I["Final report"]
 ```
 
 ## How to Navigate the Project
@@ -41,7 +43,8 @@ flowchart LR
 1. Start from [phase 1 - design](phase%201%20-%20design/README.md) to understand the modeling choices.
 2. Review [data](data/README.md) to understand the role of each data layer.
 3. Execute the notebooks in [phase 2 - etl](phase%202%20-%20etl/README.md) in numerical order.
-4. Use [phase 4 - report](phase%204%20-%20report/README.md) to inspect the final academic deliverable and its generated figures.
+4. Inspect [phase 3 - data visualization](phase%203%20-%20data%20visualization/README.md) to review the Tableau dashboards built from the warehouse.
+5. Use [phase 4 - report](phase%204%20-%20report/README.md) to inspect the final academic deliverable and its generated figures.
 
 ## Main Outputs
 
@@ -49,4 +52,5 @@ flowchart LR
 - Data quality assessment and cleaning workflow.
 - Dimensional Fact Model and star schema.
 - ETL pipeline producing dimension and fact tables.
+- Tableau workbook and packaged workbook for the final dashboard story.
 - Final academic report with figures, tables, and bibliography.
