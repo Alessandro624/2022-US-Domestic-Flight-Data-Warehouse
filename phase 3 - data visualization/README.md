@@ -11,6 +11,7 @@ The visualization work translates the dimensional model into two dashboard views
 | [US_Departure_Disruptions_2022.twb](US_Departure_Disruptions_2022.twb) | Tableau workbook containing the dashboard design. |
 | [US_Departure_Disruptions_2022.twbx](US_Departure_Disruptions_2022.twbx) | Packaged Tableau workbook, including the data extract and workbook resources. |
 | [tableau_calculated_fields.md](tableau_calculated_fields.md) | Documentation of Tableau calculated fields, buckets, rate indicators, and presentation-level filters. |
+| [shapes/](shapes/) | Custom Tableau shapes used by the workbook. |
 
 ## Dashboard Structure
 
@@ -36,3 +37,18 @@ Calculated fields used only for dashboard storytelling are documented in
 [tableau_calculated_fields.md](tableau_calculated_fields.md). They do not replace
 the warehouse measures; they provide Tableau-specific rates, departed-flight
 averages, and visualization buckets.
+
+## Custom Tableau Shapes
+
+The workbook uses a custom airplane shape stored in [shapes/](shapes/). To make
+it available in Tableau Desktop or Tableau Public Desktop, copy the PNG file into
+the local Tableau shapes repository:
+
+```text
+Documents/My Tableau Repository/Shapes/Departures Shape/
+```
+
+After copying the file, open Tableau and use `Reload Shapes` from the shape
+palette if the icon does not appear immediately. The folder name must remain
+`Departures Shape`, because this is the custom shape palette name used by the
+workbook.
