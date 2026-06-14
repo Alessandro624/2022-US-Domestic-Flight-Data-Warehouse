@@ -165,7 +165,7 @@ LLM_PROVIDER = "ollama"  # Change to "openrouter" to use OpenRouter
 
 # Ollama local configuration
 OLLAMA_BASE_URL = "http://localhost:11434"
-OLLAMA_MODEL = "llama3.1:8b"  # Run `ollama pull llama3.1:8b` first
+OLLAMA_MODEL = "llama3.2:3b"  # Run `ollama pull llama3.2:3b` first
 
 # OpenRouter configuration
 # Get your API key from https://openrouter.ai/keys
