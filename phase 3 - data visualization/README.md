@@ -8,6 +8,7 @@ The visualization work translates the dimensional model into two dashboard views
 
 | File | Purpose |
 | --- | --- |
+| [US_Departure_Disruptions_2022.mp4](US_Departure_Disruptions_2022.mp4) | Short video showing the Tableau story. |
 | [US_Departure_Disruptions_2022.twb](US_Departure_Disruptions_2022.twb) | Tableau workbook containing the dashboard design. |
 | [US_Departure_Disruptions_2022.twbx](US_Departure_Disruptions_2022.twbx) | Packaged Tableau workbook, including the data extract and workbook resources. |
 | [tableau_calculated_fields.md](tableau_calculated_fields.md) | Documentation of Tableau calculated fields, buckets, rate indicators, and presentation-level filters. |
